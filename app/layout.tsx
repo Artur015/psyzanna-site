@@ -5,8 +5,9 @@ import "./globals.css";
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim();
 const metadataBase = siteUrl ? new URL(siteUrl) : undefined;
 const resolvedSiteUrl = metadataBase?.toString().replace(/\/$/, "");
+const siteTitle = "Жанна Кононенко | Русскоязычный психолог и сексолог онлайн";
 const siteDescription =
-  "Онлайн-консультации психолога и сексолога Жанны Кононенко. Индивидуальная терапия, работа с парами, вопросы отношений и близости.";
+  "Русскоязычный психолог и сексолог Жанна Кононенко проводит онлайн-консультации: индивидуальная терапия, работа с парами и вопросы отношений и близости.";
 
 const structuredData = {
   "@context": "https://schema.org",
@@ -49,7 +50,7 @@ const structuredData = {
     {
       "@type": "ProfessionalService",
       "@id": resolvedSiteUrl ? `${resolvedSiteUrl}/#service` : "#service",
-      name: "Психолог и сексолог Жанна Кононенко",
+      name: "Русскоязычный психолог и сексолог Жанна Кононенко",
       description: siteDescription,
       provider: {
         "@id": resolvedSiteUrl ? `${resolvedSiteUrl}/#person` : "#person",
@@ -89,7 +90,7 @@ const structuredData = {
 
 export const metadata: Metadata = {
   metadataBase,
-  title: "Жанна Кононенко | Психолог и сексолог",
+  title: siteTitle,
   description: siteDescription,
   keywords: [
     "Жанна Кононенко",
@@ -104,6 +105,7 @@ export const metadata: Metadata = {
     "психолог онлайн Европа",
     "русскоязычный психолог",
     "русскоязычный психолог онлайн",
+    "психолог для русскоязычных",
     "сексолог консультация онлайн",
     "семейная терапия",
   ],
@@ -116,7 +118,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "ru_RU",
     siteName: "Жанна Кононенко",
-    title: "Жанна Кононенко | Психолог и сексолог",
+    title: siteTitle,
     description: siteDescription,
     ...(metadataBase
       ? {
@@ -126,7 +128,7 @@ export const metadata: Metadata = {
               url: "/opengraph-image",
               width: 1200,
               height: 630,
-              alt: "Жанна Кононенко — психолог и сексолог",
+              alt: "Жанна Кононенко — русскоязычный психолог и сексолог",
             },
           ],
         }
@@ -134,7 +136,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Жанна Кононенко | Психолог и сексолог",
+    title: siteTitle,
     description: siteDescription,
     ...(metadataBase
       ? {
