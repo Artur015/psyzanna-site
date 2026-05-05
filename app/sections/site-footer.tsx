@@ -19,8 +19,7 @@ export function SiteFooter() {
     <footer className="mt-8 rounded-[1.8rem] border border-white/55 bg-white/65 px-5 py-5 text-sm leading-7 text-[var(--muted-foreground)] shadow-[0_18px_50px_rgba(49,23,85,0.08)] backdrop-blur sm:px-6">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <p className="max-w-3xl">
-          Жанна Кононенко — русскоязычный психолог и сексолог онлайн для
-          клиентов в Европе: отношения, семейные вопросы, близость и
+          Жанна Кононенко — русскоязычный психолог и сексолог: отношения, семейные вопросы, близость и
           индивидуальная терапия.
         </p>
         <div className="flex items-center gap-3">

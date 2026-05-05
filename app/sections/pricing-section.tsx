@@ -43,14 +43,11 @@ export function PricingSection({ pricingItems }: PricingSectionProps) {
           </div>
           <div className="mt-6 grid gap-4 sm:grid-cols-[1fr_auto] sm:items-end">
             <div>
-              <p className="font-display text-4xl leading-none sm:text-5xl">30 минут</p>
+              <p className="font-display text-4xl leading-none sm:text-5xl">30 минут - бесплатно</p>
               <p className="mt-3 max-w-xl text-sm leading-6 text-white/82 sm:text-base">
                 Короткая вводная встреча, чтобы понять ваш запрос, формат работы и подойдём ли
                 мы друг другу.
               </p>
-            </div>
-            <div className="self-start sm:self-end">
-              <p className="font-display text-3xl leading-none sm:text-4xl">бесплатно</p>
             </div>
           </div>
         </div>
