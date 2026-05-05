@@ -36,9 +36,9 @@ function createEmailPayload(firstName: string, lastName: string, age: number, em
     timeStyle: "short",
   });
 
-  const subject = `Новая анкета: ${firstName} ${lastName} (${email})`;
+  const subject = `Новая запись на консультацию: ${firstName} ${lastName} (${email})`;
   const text = [
-    "Новая заявка с сайта психолога.",
+    "Новая запись на консультацию с сайта психолога.",
     "",
     `Имя: ${firstName}`,
     `Фамилия: ${lastName}`,
@@ -243,7 +243,7 @@ export async function submitIntakeForm(
       await sendSubmissionEmail(firstName, lastName, parsedAge, email);
 
       return buildSuccessState(
-        `Спасибо, ${firstName}. Анкета отправлена психологу на электронную почту.`,
+        `Спасибо, ${firstName}. Ваша запись на консультацию отправлена психологу.`,
       );
     } catch (error) {
       console.error("Failed to send questionnaire email via SMTP.", error);

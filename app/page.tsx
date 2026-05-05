@@ -1,15 +1,21 @@
 import {
   focusAreas,
+  hookSignals,
+  processNote,
+  processSteps,
   pricingItems,
-  principles,
   steps,
 } from "@/app/sections/home-content";
 import { AboutSection } from "@/app/sections/about-section";
 import { HeroSection } from "@/app/sections/hero-section";
+import { HookSection } from "@/app/sections/hook-section";
 import { PricingSection } from "@/app/sections/pricing-section";
 import { QuestionnaireSection } from "@/app/sections/questionnaire-section";
 import { ServicesSection } from "@/app/sections/services-section";
 import { SiteFooter } from "@/app/sections/site-footer";
+
+const headerLinkClass =
+  "rounded-full border border-[rgba(104,75,123,0.12)] bg-white/82 px-3 py-2 font-medium text-[var(--foreground)] transition hover:border-[rgba(104,75,123,0.22)] hover:bg-[var(--accent-soft)] hover:text-[var(--accent-deep)] sm:px-4";
 
 export default function Home() {
   return (
@@ -33,29 +39,38 @@ export default function Home() {
               Жанна Кононенко
             </a>
             <nav className="flex w-full flex-wrap items-center gap-3 text-sm text-[var(--muted-foreground)] sm:w-auto">
-              <a href="#about" className="transition hover:text-[var(--accent-deep)]">
-                О работе
+              <a href="#about" className={headerLinkClass}>
+                Как проходит работа
+              </a>
+              <a href="#services" className={headerLinkClass}>
+                Направления
+              </a>
+              <a href="#pricing" className={headerLinkClass}>
+                Стоимость
               </a>
               <a
-                href="#services"
-                className="transition hover:text-[var(--accent-deep)]"
+                href="https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MTAzMjA0MTExNjE2NDM0?igsh=MW1udXo4NDJna2V3aQ=="
+                target="_blank"
+                rel="noopener noreferrer"
+                className={headerLinkClass}
               >
-                Направления
+                Отзывы
               </a>
               <a
                 href="#questionnaire"
                 className="rounded-full bg-[var(--accent-deep)] px-4 py-2 font-medium text-white transition hover:opacity-90"
               >
-                Записаться
+                На консультацию
               </a>
             </nav>
           </div>
         </header>
 
         <main id="top" className="flex flex-1 flex-col gap-7">
-          <HeroSection />
-          <AboutSection principles={principles} />
+          <HookSection signals={hookSignals} />
           <ServicesSection focusAreas={focusAreas} />
+          <AboutSection steps={processSteps} note={processNote} />
+          <HeroSection />
           <PricingSection pricingItems={pricingItems} />
           <QuestionnaireSection steps={steps} />
         </main>

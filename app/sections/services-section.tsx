@@ -25,7 +25,9 @@ export function ServicesSection({ focusAreas }: ServicesSectionProps) {
           <h3 className="font-display mt-4 text-2xl leading-[0.96] text-[var(--foreground)] sm:text-3xl sm:leading-none">
             {area.title}
           </h3>
-          <p className="mt-5 text-base leading-8 text-[var(--foreground)]">{area.intro}</p>
+          <p className="mt-5 text-base leading-8 text-[var(--foreground)]">
+            {area.intro}
+          </p>
           <p className="mt-5 text-sm font-medium uppercase tracking-[0.08em] text-[var(--muted-foreground)]">
             {area.lead}
           </p>
@@ -42,9 +44,13 @@ export function ServicesSection({ focusAreas }: ServicesSectionProps) {
               <span className="font-semibold uppercase tracking-[0.08em] text-[var(--accent-deep)]">
                 Фокус
               </span>{" "}
-              <span className="font-semibold text-[var(--foreground)]">{area.focusLead}</span>
+              <span className="font-semibold text-[var(--foreground)]">
+                {area.focusLead}
+              </span>
             </p>
-            <p className="mt-2 text-base leading-7 text-[var(--foreground)]">{area.focusText}</p>
+            <p className="mt-2 text-base leading-7 text-[var(--foreground)]">
+              {area.focusText}
+            </p>
           </div>
         </article>
       ))}
@@ -61,6 +67,12 @@ export function ServicesSection({ focusAreas }: ServicesSectionProps) {
             Заполните анкету, и я предложу оптимальный вариант работы.
           </p>
         </div>
+        <a
+          href="#questionnaire"
+          className="mt-6 inline-flex w-full items-center justify-center rounded-full bg-[var(--accent)] px-5 py-4 text-sm font-semibold text-white shadow-[0_16px_38px_rgba(104,75,123,0.28)] transition hover:-translate-y-0.5 hover:opacity-95 sm:w-auto sm:px-7 sm:text-base"
+        >
+          Записаться на консультацию
+        </a>
       </article>
     </section>
   );

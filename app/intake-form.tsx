@@ -6,7 +6,7 @@ import { submitIntakeForm } from "@/app/actions";
 import { initialIntakeFormState } from "@/app/intake-form-state";
 
 const fieldClassName =
-  "mt-2 w-full rounded-[1.1rem] border border-[var(--border)] bg-white px-4 py-3 text-base text-[var(--foreground)] outline-none transition placeholder:text-[var(--placeholder)] focus:border-[var(--accent)] focus:ring-4 focus:ring-[rgba(104,75,123,0.14)]";
+  "mt-2 w-full rounded-[1.2rem] border border-[rgba(104,75,123,0.14)] bg-[rgba(255,255,255,0.92)] px-4 py-3.5 text-base text-[var(--foreground)] shadow-[inset_0_1px_0_rgba(255,255,255,0.76),0_8px_24px_rgba(57,31,89,0.04)] outline-none transition placeholder:text-[var(--placeholder)] focus:border-[var(--accent)] focus:ring-4 focus:ring-[rgba(104,75,123,0.12)]";
 
 const honeypotWrapperClassName =
   "pointer-events-none absolute left-[-10000px] top-auto h-px w-px overflow-hidden opacity-0";
@@ -112,7 +112,7 @@ export function IntakeForm() {
         </label>
       </div>
 
-      <div className="rounded-[1.5rem] border border-[var(--border)] bg-white/70 p-4">
+      <div className="rounded-[1.6rem] border border-[var(--border)] bg-[rgba(255,255,255,0.8)] p-4 shadow-[0_10px_28px_rgba(57,31,89,0.04)] sm:p-5">
         <label className="flex items-start gap-3 text-sm leading-7 text-[var(--foreground)]">
           <input
             type="checkbox"
@@ -135,24 +135,24 @@ export function IntakeForm() {
         </Link>
       </div>
 
-      <div className="flex flex-col gap-4 rounded-[1.5rem] border border-[var(--border)] bg-white/70 p-4 md:flex-row md:items-center md:justify-between">
+      <div className="flex flex-col gap-4 rounded-[1.6rem] border border-[var(--border)] bg-[linear-gradient(180deg,rgba(255,255,255,0.82),rgba(245,236,252,0.72))] p-4 shadow-[0_10px_28px_rgba(57,31,89,0.04)] md:flex-row md:items-center md:justify-between sm:p-5">
         <p className="max-w-2xl text-sm leading-7 text-[var(--muted-foreground)]">
-          Анкета направляется психологу на электронную почту. Если автоматическая
-          отправка недоступна на сервере, ниже появится готовая ссылка для
-          письма в вашем почтовом приложении.
+          После отправки анкета поступает психологу. Если автоматическая отправка
+          на сервере недоступна, ниже появится готовая ссылка для письма в вашем
+          почтовом приложении.
         </p>
 
         <button
           type="submit"
           disabled={pending}
-          className="inline-flex w-full items-center justify-center rounded-full bg-[var(--accent)] px-5 py-3.5 text-base font-semibold text-white transition hover:opacity-95 disabled:cursor-not-allowed disabled:opacity-70 md:min-w-52 md:w-auto md:px-6"
+          className="inline-flex w-full items-center justify-center rounded-full bg-[var(--accent)] px-5 py-3.5 text-base font-semibold text-white shadow-[0_16px_38px_rgba(104,75,123,0.22)] transition hover:opacity-95 disabled:cursor-not-allowed disabled:opacity-70 md:min-w-56 md:w-auto md:px-6"
         >
-          {pending ? "Отправляем..." : "Отправить анкету"}
+          {pending ? "Записываем..." : "Записаться на консультацию"}
         </button>
       </div>
 
-      <p className="rounded-[1.4rem] border border-[rgba(104,75,123,0.14)] bg-[rgba(255,255,255,0.76)] px-4 py-3 text-sm font-medium leading-7 text-[var(--foreground)]">
-        🔒 Вся информация остаётся конфиденциальной
+      <p className="rounded-[1.5rem] border border-[rgba(104,75,123,0.14)] bg-[rgba(255,255,255,0.8)] px-4 py-3.5 text-sm font-medium leading-7 text-[var(--foreground)] shadow-[0_8px_24px_rgba(57,31,89,0.03)]">
+        Вся информация остаётся конфиденциальной.
       </p>
 
       {state.message ? (

@@ -5,19 +5,51 @@ import "./globals.css";
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim();
 const metadataBase = siteUrl ? new URL(siteUrl) : undefined;
 const resolvedSiteUrl = metadataBase?.toString().replace(/\/$/, "");
-const siteTitle = "Жанна Кононенко | Русскоязычный психолог и сексолог онлайн";
+
+const siteName = "Жанна Кононенко";
+const siteTitle =
+  "Жанна Кононенко | Русскоязычный психолог онлайн, 30 минут бесплатно";
 const siteDescription =
-  "Русскоязычный психолог и сексолог Жанна Кононенко проводит онлайн-консультации: индивидуальная терапия, работа с парами и вопросы отношений и близости.";
+  "Русскоязычный психолог и сексолог Жанна Кононенко проводит онлайн-консультации для клиентов в Европе. Первая сессия 30 минут бесплатно: индивидуальная терапия, работа с парами, отношения и близость.";
+
+const websiteId = resolvedSiteUrl ? `${resolvedSiteUrl}/#website` : "#website";
+const webpageId = resolvedSiteUrl ? `${resolvedSiteUrl}/#webpage` : "#webpage";
+const personId = resolvedSiteUrl ? `${resolvedSiteUrl}/#person` : "#person";
+const serviceId = resolvedSiteUrl ? `${resolvedSiteUrl}/#service` : "#service";
 
 const structuredData = {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "WebSite",
-      "@id": resolvedSiteUrl ? `${resolvedSiteUrl}/#website` : "#website",
-      name: "Жанна Кононенко",
-      inLanguage: "ru",
+      "@id": websiteId,
+      name: siteName,
       description: siteDescription,
+      inLanguage: "ru",
+      publisher: {
+        "@id": personId,
+      },
+      ...(resolvedSiteUrl
+        ? {
+            url: resolvedSiteUrl,
+          }
+        : {}),
+    },
+    {
+      "@type": "WebPage",
+      "@id": webpageId,
+      name: siteTitle,
+      description: siteDescription,
+      inLanguage: "ru",
+      isPartOf: {
+        "@id": websiteId,
+      },
+      about: {
+        "@id": serviceId,
+      },
+      mainEntity: {
+        "@id": serviceId,
+      },
       ...(resolvedSiteUrl
         ? {
             url: resolvedSiteUrl,
@@ -26,9 +58,12 @@ const structuredData = {
     },
     {
       "@type": "Person",
-      "@id": resolvedSiteUrl ? `${resolvedSiteUrl}/#person` : "#person",
-      name: "Жанна Кононенко",
+      "@id": personId,
+      name: siteName,
       jobTitle: "Психолог и сексолог",
+      description:
+        "Русскоязычный психолог и сексолог, специализирующийся на отношениях, близости, индивидуальной и парной терапии онлайн. Первая сессия 30 минут бесплатно.",
+      email: "sanna.kononenko@gmail.com",
       knowsAbout: [
         "Психология",
         "Сексология",
@@ -49,21 +84,28 @@ const structuredData = {
     },
     {
       "@type": "ProfessionalService",
-      "@id": resolvedSiteUrl ? `${resolvedSiteUrl}/#service` : "#service",
+      "@id": serviceId,
       name: "Русскоязычный психолог и сексолог Жанна Кононенко",
       description: siteDescription,
       provider: {
-        "@id": resolvedSiteUrl ? `${resolvedSiteUrl}/#person` : "#person",
+        "@id": personId,
       },
+      areaServed: "Europe",
+      availableLanguage: ["ru"],
       serviceType: [
         "Индивидуальная терапия",
         "Консультации для пар",
         "Семейная терапия",
         "Сексология",
       ],
-      areaServed: "EU",
-      availableLanguage: ["ru"],
       offers: [
+        {
+          "@type": "Offer",
+          name: "Первая сессия 30 минут",
+          price: "0",
+          priceCurrency: "EUR",
+          category: "Первичная консультация",
+        },
         {
           "@type": "Offer",
           name: "Индивидуальная сессия",
@@ -92,22 +134,27 @@ export const metadata: Metadata = {
   metadataBase,
   title: siteTitle,
   description: siteDescription,
+  applicationName: siteName,
+  authors: [{ name: siteName }],
+  creator: siteName,
+  publisher: siteName,
   keywords: [
     "Жанна Кононенко",
-    "психолог",
-    "сексолог",
+    "психолог онлайн",
+    "сексолог онлайн",
+    "русскоязычный психолог",
+    "русскоязычный психолог онлайн",
+    "русскоязычный психолог в Европе",
+    "психолог для русскоязычных",
     "семейный психолог",
     "консультации для пар",
     "индивидуальная терапия",
     "сексология",
-    "психолог онлайн",
-    "сексолог онлайн",
-    "психолог онлайн Европа",
-    "русскоязычный психолог",
-    "русскоязычный психолог онлайн",
-    "психолог для русскоязычных",
-    "сексолог консультация онлайн",
-    "семейная терапия",
+    "психолог по отношениям",
+    "семейная терапия онлайн",
+    "первая консультация бесплатно",
+    "первая сессия бесплатно",
+    "психолог 30 минут бесплатно",
   ],
   alternates: metadataBase
     ? {
@@ -117,7 +164,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "ru_RU",
-    siteName: "Жанна Кононенко",
+    siteName,
     title: siteTitle,
     description: siteDescription,
     ...(metadataBase
@@ -128,7 +175,7 @@ export const metadata: Metadata = {
               url: "/opengraph-image",
               width: 1200,
               height: 630,
-              alt: "Жанна Кононенко — русскоязычный психолог и сексолог",
+              alt: "Жанна Кононенко — русскоязычный психолог онлайн, первая сессия 30 минут бесплатно",
             },
           ],
         }
@@ -147,6 +194,13 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+    },
   },
   verification: {
     google: "67O0S1zg9EHpjil88LntY9EGABCaA4b4nOQtlOmJWCc",
